@@ -1,5 +1,6 @@
 package de.lolmerkat.overlay.components
 
+import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.LinearProgressIndicator
@@ -13,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.lolmerkat.overlay.WindowSize
 
+@Preview
 @Composable
 fun ProgressIndicator() {
     Box(

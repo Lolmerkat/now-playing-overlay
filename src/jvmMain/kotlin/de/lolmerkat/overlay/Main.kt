@@ -22,6 +22,10 @@ import de.lolmerkat.overlay.components.TrackInformation
 import kotlin.system.exitProcess
 
 fun main() = application {
+    //TODO: Hoist state to lower children
+    var mainPositionX by remember { mutableStateOf(0) }
+    var mainPositionY by remember { mutableStateOf(0) }
+
     var isMainOpen by remember { mutableStateOf(true) }
     var isControlsOpen by remember { mutableStateOf(false) }
     var coverImageUri by remember { mutableStateOf("coverPlaceholder.png") }
@@ -29,7 +33,7 @@ fun main() = application {
     var albumName by remember { mutableStateOf("<Album>") }
     var artistName by remember { mutableStateOf("<Artist>") }
 
-    WindowSize.resizeFactor = 2.0
+    WindowSize.resizeFactor = 1.5
 
     if (isMainOpen)
         Window(
@@ -37,7 +41,7 @@ fun main() = application {
             state = rememberWindowState(
                 placement = WindowPlacement.Floating,
                 isMinimized = false,
-                position = WindowPosition(10.dp, 10.dp),
+                position = WindowPosition(mainPositionX.dp, mainPositionY.dp),
                 width = WindowSize.windowWidth.dp,
                 height = WindowSize.windowHeight.dp
             ),
@@ -85,7 +89,6 @@ fun main() = application {
     if (isControlsOpen)
         Window(
             onCloseRequest = {}) {
-
         }
 
     Tray(
@@ -103,7 +106,6 @@ fun main() = application {
             onClick = { exitProcess(0) })
     }
 }
-
 
 object TrayIcon : Painter() { //TODO: REPLACE WITH painterResource()
     override val intrinsicSize = Size(256f, 256f)
