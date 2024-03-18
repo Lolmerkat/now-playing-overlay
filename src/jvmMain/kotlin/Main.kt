@@ -10,6 +10,7 @@ import androidx.compose.ui.input.pointer.onPointerEvent
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.*
+import de.lolmerkat.overlay.gui.ControlWindow
 import de.lolmerkat.overlay.gui.TrackWindow
 import de.lolmerkat.overlay.gui.util.SizeManager
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -24,6 +25,7 @@ fun main() = application {
 
     GlobalScope.launch {
         delay(5000L)
+
     }
 
     Window(
@@ -36,33 +38,49 @@ fun main() = application {
             placement = WindowPlacement.Floating,
             position = WindowPosition(0.dp, 0.dp),
             size = DpSize(SizeManager.appWidth.dp, SizeManager.appHeight.dp)
-        ),
+        )
     ) {
         TrackWindow(
-            Modifier.onPointerEvent(
+            Modifier
+            .onPointerEvent(
                 eventType = PointerEventType.Enter,
-                onEvent = { showControlWindow = true }
+                onEvent = {
+                    showControlWindow = true
+                }
             )
             .onPointerEvent(
                 eventType = PointerEventType.Exit,
-                onEvent = { showControlWindow = false }
+                onEvent = {
+                    showControlWindow = false
+                }
             ))
     }
 
     if (showControlWindow) {
         Window(
-            onCloseRequest = {},
+            onCloseRequest = { },
             undecorated = true,
-            transparent = false,
+            transparent = true,
             alwaysOnTop = true,
             resizable = false,
             state = WindowState(
                 placement = WindowPlacement.Floating,
-                position = WindowPosition(0.dp, (SizeManager.appHeight + (SizeManager.Padding.outer / 3.0).roundToInt()).dp),
+                position = WindowPosition(0.dp, (SizeManager.appHeight + (SizeManager.Padding.outer / 4.0)).roundToInt().dp),
                 size = DpSize(SizeManager.appWidth.dp, (SizeManager.appHeight / 3.0).roundToInt().dp)
-            ),
+            )
         ) {
-
+            ControlWindow(
+                Modifier.onPointerEvent(
+                    eventType = PointerEventType.Enter,
+                    onEvent = {
+                        showControlWindow = true
+                    }
+                )
+                .onPointerEvent(
+                    eventType = PointerEventType.Exit,
+                    onEvent = { showControlWindow = false }
+                )
+            )
         }
     }
 }

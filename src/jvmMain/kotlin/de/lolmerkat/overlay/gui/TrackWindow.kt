@@ -14,9 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import de.lolmerkat.overlay.gui.layout.AlbumCover
-import de.lolmerkat.overlay.gui.layout.HorizontalSpacer
 import de.lolmerkat.overlay.gui.layout.ProgressInformation
 import de.lolmerkat.overlay.gui.layout.TrackInformation
+import de.lolmerkat.overlay.gui.layout.components.HorizontalSpacer
 import de.lolmerkat.overlay.gui.util.SizeManager
 
 private val padding = SizeManager.Padding
