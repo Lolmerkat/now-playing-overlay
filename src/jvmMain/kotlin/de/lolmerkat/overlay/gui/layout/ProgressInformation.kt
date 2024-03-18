@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import de.lolmerkat.overlay.gui.layout.components.VerticalSpacer
 import de.lolmerkat.overlay.gui.util.SizeManager
 import kotlin.math.roundToInt
 
