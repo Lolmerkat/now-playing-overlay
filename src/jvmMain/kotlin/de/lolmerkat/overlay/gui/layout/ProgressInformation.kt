@@ -10,10 +10,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.ExperimentalUnitApi
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import de.lolmerkat.overlay.gui.util.SizeManager
 import kotlin.math.roundToInt
 
+@OptIn(ExperimentalUnitApi::class)
 @Composable
 @Preview
 fun ProgressInformation() {
@@ -34,7 +38,7 @@ fun ProgressInformation() {
                 .clip(RoundedCornerShape(percent = 50))
                 .align(Alignment.CenterHorizontally)
         )
-        VerticalSpacer((SizeManager.Padding.outer / 3.0).roundToInt().dp)
+        VerticalSpacer((SizeManager.Padding.outer / 4.0).roundToInt().dp)
         Row (
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
@@ -43,11 +47,13 @@ fun ProgressInformation() {
         ) {
             Text(
                 text = "ww:ww:ww",
-                color = Color.White
+                color = Color.White,
+                fontSize = TextUnit((SizeManager.appHeight / 10.0F), TextUnitType.Sp)
             )
             Text(
                 text = "ww:ww:ww",
-                color = Color.White
+                color = Color.White,
+                fontSize = TextUnit((SizeManager.appHeight / 10.0F), TextUnitType.Sp)
             )
         }
     }

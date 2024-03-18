@@ -9,6 +9,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -20,13 +21,14 @@ import de.lolmerkat.overlay.gui.util.SizeManager
 
 private val padding = SizeManager.Padding
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 @Preview
-fun Application() {
+fun TrackWindow(modifier: Modifier) {
     MaterialTheme {
         Surface(
             modifier = Modifier
-                .fillMaxSize(),
+                .fillMaxSize().then(modifier),
             shape = RoundedCornerShape(23.dp),
             color = Color(53, 53, 53, 150)
         ) {

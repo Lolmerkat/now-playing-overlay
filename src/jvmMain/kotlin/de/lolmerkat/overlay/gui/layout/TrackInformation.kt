@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
+import de.lolmerkat.overlay.gui.util.SizeManager
 
 @OptIn(ExperimentalUnitApi::class)
 @Composable
@@ -22,15 +23,15 @@ fun TrackInformation() {
     ) {
         Text(text = "<title>",
             color = Color.White,
-            fontSize = TextUnit(2.0F, TextUnitType.Em)
+            fontSize = TextUnit((SizeManager.appHeight / 5.0F), TextUnitType.Sp)
         )
         Text(text = "<artist>",
             color = Color.White,
-            fontSize = TextUnit(1.25F, TextUnitType.Em)
+            fontSize = TextUnit((SizeManager.appHeight / 10.0F), TextUnitType.Sp)
         )
         Text(text = "<album>",
             color = Color.White,
-            fontSize = TextUnit(1.25F, TextUnitType.Em)
+            fontSize = TextUnit((SizeManager.appHeight / 10.0F), TextUnitType.Sp)
         )
     }
 }
