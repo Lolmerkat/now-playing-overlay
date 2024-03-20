@@ -22,10 +22,10 @@ import kotlin.math.roundToInt
 @OptIn(DelicateCoroutinesApi::class, ExperimentalComposeUiApi::class)
 fun main() = application {
     var showControlWindow by remember { mutableStateOf(false) }
+    var showSettingsWindow by remember { mutableStateOf(false) }
 
     GlobalScope.launch {
         delay(5000L)
-
     }
 
     Window(
@@ -41,7 +41,7 @@ fun main() = application {
         )
     ) {
         TrackWindow(
-            Modifier
+            modifier = Modifier
             .onPointerEvent(
                 eventType = PointerEventType.Enter,
                 onEvent = {
@@ -53,7 +53,11 @@ fun main() = application {
                 onEvent = {
                     showControlWindow = false
                 }
-            ))
+            ),
+            showSettings = showSettingsWindow,
+            onSettingsClicked = { showSettingsWindow = true },
+            closeApplication = { this@application.exitApplication() }
+        )
     }
 
     if (showControlWindow) {
