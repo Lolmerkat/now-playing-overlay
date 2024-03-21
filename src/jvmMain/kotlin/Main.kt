@@ -62,7 +62,7 @@ fun main() = application {
 
     if (showControlWindow) {
         Window(
-            onCloseRequest = { },
+            onCloseRequest = { showControlWindow = false },
             undecorated = true,
             transparent = true,
             alwaysOnTop = true,
@@ -86,5 +86,21 @@ fun main() = application {
                 )
             )
         }
+    }
+
+    if (showSettingsWindow) {
+        Window(
+            onCloseRequest = { showSettingsWindow = false },
+            title = "Settings",
+            resizable = true,
+            state = WindowState(
+                placement = WindowPlacement.Floating,
+                position = WindowPosition((SizeManager.appWidth + (SizeManager.Padding.outer / 4.0)).roundToInt().dp, 0.dp),
+                size = DpSize((SizeManager.appWidth / 1.5).roundToInt().dp, (SizeManager.appWidth / 1.5).roundToInt().dp)
+            )
+        ) {
+
+        }
+
     }
 }
